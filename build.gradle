@@ -43,7 +43,7 @@ task clean(type: Delete) {
 }
 //统一声明配置
 ext {
-    userOrg = 'SeanZ'
+    userOrg = '***'
     groupId = 'com.seanz.library'
     uploadName = 'SeanZLibrary'
     publishVersion = '1.0.0'
