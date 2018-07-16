@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clTitlebar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/px120"
+    android:background="#38373c">
+
+    <ImageView
+        android:id="@+id/ivTitlebarLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/px24"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:src="@drawable/arrow_left"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvTitlebarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="标题栏"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp60"
+        android:textStyle="normal" />
+
+
+    <ImageView
+        android:id="@+id/ivTitlebarRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/px24"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/vbtn_titlebar_me" />
+
+    <TextView
+        android:id="@+id/ivTitlebarRight_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+</RelativeLayout>
