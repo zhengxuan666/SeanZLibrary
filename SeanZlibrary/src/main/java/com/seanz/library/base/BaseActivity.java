@@ -353,6 +353,10 @@ public abstract class BaseActivity extends SupportActivity implements OnClickLis
         showTopLeftButton(text, 0);
     }
 
+    protected void showTopLeftButton(int resId) {
+        showTopLeftButton(null, resId);
+    }
+
     protected void showTopLeftButton(String text, int resId) {
         if (topLeftButton == null) {
             topLeftButton = (ImageView) findViewById(R.id.ivTitlebarLeft);
@@ -514,6 +518,7 @@ public abstract class BaseActivity extends SupportActivity implements OnClickLis
     }
 
     private OnBooleanListener onPermissionListener;
+
     //DDV获取权限
     public void onPermissionRequests(String permission, OnBooleanListener onBooleanListener) {
         onPermissionListener = onBooleanListener;
@@ -539,6 +544,7 @@ public abstract class BaseActivity extends SupportActivity implements OnClickLis
             }
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == 1) {
