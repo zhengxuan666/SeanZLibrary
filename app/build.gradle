@@ -5,7 +5,7 @@ def support = rootProject.ext.support // 依赖
 android {
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
-        applicationId "com.seanz.library"
+        applicationId "com.seanz.demo"
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
         versionCode 1
