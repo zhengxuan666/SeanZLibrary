@@ -134,7 +134,7 @@ dependencies {
     api 'com.github.AnliaLee:PhotoFactory:1.0.1'
 //    api 'q.rorbin:badgeview:1.1.3'
     //正方形验证码输入框 https://github.com/JackTuoTuo/VerificationCodeView
-    api 'com.jacktuotuo.customview:verificationcodeview:1.0.2'
+    api 'com.jacktuotuo.customview:verificationcodeview:1.0.4'
 
     debugImplementation ext.leakCanaryDebug
     releaseImplementation ext.leakCanaryRelease
