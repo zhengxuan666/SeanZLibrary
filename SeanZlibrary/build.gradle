@@ -71,7 +71,7 @@ dependencies {
     implementation ext.rxLife
     implementation ext.rxBinding
     //utils https://github.com/Blankj/AndroidUtilCode/blob/master/README-CN.md 具体功能参考
-    api 'com.blankj:utilcode:1.12.0'
+    api 'com.blankj:utilcode:1.17.3'
 
     //okgo 网络组件
     api 'com.lzy.net:okgo:3.0.4'
