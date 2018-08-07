@@ -46,8 +46,8 @@ ext {
     userOrg = '***'
     groupId = 'com.seanz.library'
     uploadName = 'SeanZLibrary'
-    publishVersion = '1.0.3'
-    desc = '升级了Utils'
+    publishVersion = '1.0.4'
+    desc = '修改BaseAtivity'
     website = 'https://github.com/zhengxuan666/SeanZLibrary.git'
     licences = ['MIT']
 }

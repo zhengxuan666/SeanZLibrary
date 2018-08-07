@@ -91,6 +91,8 @@ dependencies {
     //图片组件
     implementation ext.glide
     annotationProcessor ext.glideCompiler
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
+
 
     //轮播Banner
     api 'com.bigkoo:ConvenientBanner:2.1.4'

@@ -33,7 +33,9 @@ import me.yokeyword.fragmentation.SupportActivity;
  * @author sam
  * @Version : 1.0
  * @date : 2018.5.8
+ * @deprecated {@link BaseActivity}
  */
+@Deprecated
 public abstract class BaseActivityTitlebar extends SupportActivity implements OnClickListener {
     private static final String TAG = "BaseActivity";
     private RelativeLayout relTitleBar;// 顶部导航栏

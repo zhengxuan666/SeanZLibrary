@@ -166,7 +166,7 @@ public abstract class BaseActivity extends SupportActivity implements OnClickLis
     protected void onClickFailureResetButton(View view) {
     }
 
-    protected void onClickTitlebarShare(View view) {
+    protected void onClickTitlebarRightText(View view) {
     }
 
     protected void onClickTitlebarRight(View view) {
@@ -397,7 +397,15 @@ public abstract class BaseActivity extends SupportActivity implements OnClickLis
         if (topRightText == null) {
             topRightText = findViewById(R.id.ivTitlebarRight_Tv);
         }
+        topRightText.setVisibility(View.VISIBLE);
         topRightText.setText(string);
+    }
+
+    protected void setTopRightTextColor(int res){
+        if (topRightText == null) {
+            topRightText = findViewById(R.id.ivTitlebarRight_Tv);
+        }
+        topRightText.setTextColor(getResources().getColor(res));
     }
 
 
@@ -455,7 +463,7 @@ public abstract class BaseActivity extends SupportActivity implements OnClickLis
         if (i == R.id.ivTitlebarLeft) {
             onClickedTopLeftButtton(v);
         } else if (i == R.id.top_right_text) {
-            onClickTitlebarShare(v);
+            onClickTitlebarRightText(v);
         } else if (i == R.id.ivTitlebarRight) {
             onClickTitlebarRight(v);
         } else if (i == R.id.reset_button) {
