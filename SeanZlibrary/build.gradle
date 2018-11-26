@@ -168,8 +168,8 @@ publish {
     userOrg = 'zhengxuan666'
     groupId = 'com.seanz.library'
     uploadName = 'SeanZLibrary'
-    publishVersion = '1.0.5'
-    desc = '更新部分类库'
+    publishVersion = '1.0.6'
+    desc = '去除传递依赖'
     website = 'https://github.com/zhengxuan666/SeanZLibrary.git'
     licences = ['MIT']
 }
