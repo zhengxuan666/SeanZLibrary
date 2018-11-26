@@ -41,7 +41,6 @@ android {
         checkReleaseBuilds false
     }
 }
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
@@ -150,11 +149,11 @@ dependencies {
 //添加
 publish {
     artifactId = 'SeanZLibrary'
-//    userOrg = rootProject.userOrg
+    userOrg = rootProject.userOrg
     groupId = rootProject.groupId
     uploadName = rootProject.uploadName
     publishVersion = rootProject.publishVersion
-    desc = rootProject.description
+    desc = rootProject.desc
     website = rootProject.website
     licences = rootProject.licences
 }
