@@ -123,7 +123,7 @@ ext {
     rxBindingSupportRecyclerView = "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:${rxBindingVersion}"
     rxBindingLeanbackV17 = "com.jakewharton.rxbinding2:rxbinding-leanback-v17:${rxBindingVersion}"
     //网库请求库
-    okio = "com.squareup.okio:okio:1.13.0"
+    okio = "com.squareup.okio:okio:1.15.0"
 
     //图片加载
     glide = "com.github.bumptech.glide:glide:${glideVersion}"

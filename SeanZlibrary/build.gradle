@@ -45,6 +45,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+configurations.all {
+    resolutionStrategy {
+        force ext.okhttp
+        force ext.okio
+        force ext.rxJava
+        force ext.gson
+    }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
@@ -153,11 +161,11 @@ dependencies {
 //添加
 publish {
     artifactId = 'SeanZLibrary'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    uploadName = rootProject.uploadName
-    publishVersion = rootProject.publishVersion
-    desc = rootProject.desc
-    website = rootProject.website
-    licences = rootProject.licences
+    userOrg = 'zhengxuan666'
+    groupId = 'com.seanz.library'
+    uploadName = 'SeanZLibrary'
+    publishVersion = '1.0.5'
+    desc = '更新部分类库'
+    website = 'https://github.com/zhengxuan666/SeanZLibrary.git'
+    licences = ['MIT']
 }

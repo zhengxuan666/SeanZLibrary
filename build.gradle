@@ -46,19 +46,20 @@ allprojects {
     tasks.withType(Javadoc) {
         options.addStringOption('Xdoclint:none', '-quiet')
         options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
     }
+    tasks.getByPath(":SeanZlibrary:javadocRelease").enabled = false
 }
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-//统一声明配置
-ext {
-    userOrg = 'SXGenius'
-    groupId = 'com.seanz.library'
-    uploadName = 'SeanZLibrary'
-    publishVersion = '1.0.5'
-    desc = '更新部分类库'
-    website = 'https://github.com/zhengxuan666/SeanZLibrary.git'
-    licences = ['MIT']
-}
+////统一声明配置
+//ext {
+//    userOrg = 'SXGenius'
+//    groupId = 'com.seanz.library'
+//    uploadName = 'SeanZLibrary'
+//    publishVersion = '1.0.5'
+//    desc = '更新部分类库'
+//    website = 'https://github.com/zhengxuan666/SeanZLibrary.git'
+//    licences = ['MIT']
+//}
