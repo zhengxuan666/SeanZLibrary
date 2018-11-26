@@ -54,11 +54,11 @@ task clean(type: Delete) {
 }
 //统一声明配置
 ext {
-    userOrg = '***'
+    userOrg = 'SXGenius'
     groupId = 'com.seanz.library'
     uploadName = 'SeanZLibrary'
-    publishVersion = '1.0.4'
-    desc = '修改BaseAtivity'
+    publishVersion = '1.0.5'
+    desc = '更新部分类库'
     website = 'https://github.com/zhengxuan666/SeanZLibrary.git'
     licences = ['MIT']
 }
