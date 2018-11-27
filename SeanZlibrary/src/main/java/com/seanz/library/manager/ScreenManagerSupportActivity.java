@@ -6,12 +6,12 @@ package com.seanz.library.manager;
  * @date 2018/5/4
  */
 
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.seanz.library.base.BaseSupportActivity;
 
 
 /**
@@ -33,7 +33,7 @@ public class ScreenManagerSupportActivity {
     /**
      * 窗口全屏
      */
-    public void setFullScreen(boolean isChange,BaseSupportActivity mActivity) {
+    public void setFullScreen(boolean isChange,Activity mActivity) {
         if(!isChange){
             return;
         }
@@ -46,7 +46,7 @@ public class ScreenManagerSupportActivity {
     /**
      * [沉浸状态栏]
      */
-    public void setStatusBar(boolean isChange,BaseSupportActivity mActivity) {
+    public void setStatusBar(boolean isChange,Activity mActivity) {
         if (!isChange){
             return;
         }
@@ -63,7 +63,7 @@ public class ScreenManagerSupportActivity {
     /**
      * 旋转屏幕
      **/
-    public void setScreenRoate(boolean isPortrait, BaseSupportActivity mActivity) {
+    public void setScreenRoate(boolean isPortrait, Activity mActivity) {
         if (isPortrait) {
             mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {

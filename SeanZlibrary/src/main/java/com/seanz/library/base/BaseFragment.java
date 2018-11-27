@@ -1,112 +1,60 @@
 package com.seanz.library.base;
 
-import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.seanz.library.R;
-import com.seanz.library.configs.IConstants;
-import com.seanz.library.utils.ViewUtils;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
-import java.util.ArrayList;
-
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-//import rx.Subscriber;
+import me.yokeyword.fragmentation.SupportFragment;
 
+/**
+ * Created by SeanZ on 2017/9/18.
+ */
 
-public abstract class BaseFragment extends Fragment implements View.OnClickListener {
-    public ContentPage contentPage;
-    public ProgressDialog pdLoading;
-    private ArrayList<Disposable> subscribers;
-    private TextView mResetButton;
-    private String contentPageType;
+public class BaseFragment extends SupportFragment {
 
-    protected void onClickFailureResetButton(View view) {
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        /**
-         * 初始化pdLoading
-         */
-        pdLoading = new ProgressDialog(getActivity());
-        pdLoading.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        pdLoading.setMessage("请稍后");
-        pdLoading.setCanceledOnTouchOutside(false);
-        pdLoading.setCancelable(true);
-        /**
-         * 创建Subscriber容器
-         */
-        subscribers  = new ArrayList<>();
-        if (contentPage == null) {
-            contentPage = new ContentPage(getActivity()) {
-                @Override
-                protected Object loadData() {
-                    contentPageType = (String) requestData();
-                    return contentPageType;
-                }
-                @Override
-                protected View createSuccessView() {
-                    return getSuccessView();
-                }
-            };
-            if (contentPageType == IConstants.STATE_FAILED) {
-                mResetButton = (TextView) contentPage.findViewById(R.id.reset_button);
-                mResetButton.setOnClickListener(BaseFragment.this);
-            }
-        } else {
-            ViewUtils.removeSelfFromParent(contentPage);
-        }
-        return contentPage;
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
-    /**
-     * 返回据的fragment填充的具体View
-     */
-    protected abstract View getSuccessView();
-
-    /**
-     * 返回请求服务器的数据
-     */
-    protected abstract Object requestData();
-
-    public void refreshPage(Object o) {
-        contentPage.refreshPage(o);
+    //跳转页面
+    public void goActivity(Class<?> cls) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), cls);
+        startActivity(intent);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        for(Disposable subscriber:subscribers){
-            if(!subscriber.isDisposed()){
-                subscriber.dispose();
-            }
-        }
     }
-
-    public Disposable addSubscriber(Disposable subscriber) {
-        subscribers.add(subscriber);
-        return subscriber;
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
-    public final void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.ivTitlebarLeft) {
-
-        } else if (i == R.id.reset_button) {
-            onClickFailureResetButton(v);
-            //如果使用黄油刀，请注释掉这里
-        } else {
-
-        }
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+    @Subscribe
+    public void onEvent(String str){
     }
 }
-
-
-

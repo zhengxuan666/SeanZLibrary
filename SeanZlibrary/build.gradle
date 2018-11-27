@@ -89,9 +89,9 @@ dependencies {
     api 'com.blankj:utilcode:1.17.3'
 
     //okgo 网络组件
-    api 'com.lzy.net:okgo:3.0.4'
-    api 'com.lzy.net:okserver:2.0.5'
-    api 'com.lzy.net:okrx2:2.0.2'
+//    api 'com.lzy.net:okgo:3.0.4'
+//    api 'com.lzy.net:okserver:2.0.5'
+//    api 'com.lzy.net:okrx2:2.0.2'
     api 'com.readystatesoftware.chuck:library:1.0.4'
     implementation ext.retrofit
     implementation ext.retrofitConverterGson
@@ -106,7 +106,7 @@ dependencies {
     //图片组件
     implementation ext.glide
     annotationProcessor ext.glideCompiler
-    implementation 'jp.wasabeef:glide-transformations:3.3.0'
+    implementation 'jp.wasabeef:glide-transformations:4.0.0'
 
 
     //轮播Banner
@@ -168,8 +168,8 @@ publish {
     userOrg = 'zhengxuan666'
     groupId = 'com.seanz.library'
     uploadName = 'SeanZLibrary'
-    publishVersion = '1.0.6'
-    desc = '去除传递依赖'
+    publishVersion = '1.0.7'
+    desc = '修改基类'
     website = 'https://github.com/zhengxuan666/SeanZLibrary.git'
     licences = ['MIT']
 }

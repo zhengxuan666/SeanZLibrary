@@ -36,6 +36,7 @@ import com.seanz.library.view.view.progress.ProgressBarLayout;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
+import me.yokeyword.fragmentation_swipeback.SwipeBackActivity;
 
 /**
  * 功能：SupportActivity基类
@@ -44,7 +45,7 @@ import me.yokeyword.fragmentation.SupportActivity;
  * @Version : 1.0
  * @date : 2018.5.8
  */
-public abstract class BaseActivity extends SupportActivity implements OnClickListener {
+public abstract class BaseActivity extends SwipeBackActivity implements OnClickListener {
     private static final String TAG = "BaseActivity";
     private RelativeLayout relTitleBar;// 顶部导航栏
     private TextView moduleTextView;
