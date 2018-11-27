@@ -92,7 +92,7 @@ dependencies {
 //    api 'com.lzy.net:okgo:3.0.4'
 //    api 'com.lzy.net:okserver:2.0.5'
 //    api 'com.lzy.net:okrx2:2.0.2'
-    api 'com.readystatesoftware.chuck:library:1.0.4'
+//    api 'com.readystatesoftware.chuck:library:1.0.4'
     implementation ext.retrofit
     implementation ext.retrofitConverterGson
     implementation ext.rxJavaForRetrofit
@@ -145,7 +145,7 @@ dependencies {
 //    api 'com.aliyun.ams:alicloud-android-third-push:3.0.5@aar'
 
 
-    api 'com.github.travijuu:numberpicker:1.0.7'
+//    api 'com.github.travijuu:numberpicker:1.0.7'
     api 'com.github.hackware1993:MagicIndicator:1.5.0'
 
     api 'com.github.AnliaLee:PhotoFactory:1.0.1'
@@ -168,8 +168,8 @@ publish {
     userOrg = 'zhengxuan666'
     groupId = 'com.seanz.library'
     uploadName = 'SeanZLibrary'
-    publishVersion = '1.0.6'
-    desc = '修改基类'
+    publishVersion = '1.0.7'
+    desc = '降低使用版本'
     website = 'https://github.com/zhengxuan666/SeanZLibrary.git'
     licences = ['MIT']
 }
