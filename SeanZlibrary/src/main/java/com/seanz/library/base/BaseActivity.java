@@ -9,7 +9,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.CheckResult;
 import android.support.annotation.ColorRes;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -32,10 +34,16 @@ import com.seanz.library.manager.ActivityStackManager;
 import com.seanz.library.manager.ScreenManager;
 import com.seanz.library.utils.DialogUtils;
 import com.seanz.library.view.view.progress.ProgressBarLayout;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.RxLifecycle;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import me.yokeyword.fragmentation.SupportActivity;
+import io.reactivex.Observable;
+import io.reactivex.subjects.BehaviorSubject;
 import me.yokeyword.fragmentation_swipeback.SwipeBackActivity;
 
 /**
@@ -45,7 +53,7 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackActivity;
  * @Version : 1.0
  * @date : 2018.5.8
  */
-public abstract class BaseActivity extends SwipeBackActivity implements OnClickListener {
+public abstract class BaseActivity extends SwipeBackActivity implements OnClickListener, LifecycleProvider<ActivityEvent> {
     private static final String TAG = "BaseActivity";
     private RelativeLayout relTitleBar;// 顶部导航栏
     private TextView moduleTextView;
@@ -70,11 +78,36 @@ public abstract class BaseActivity extends SwipeBackActivity implements OnClickL
     protected boolean isScreenPortrait = true;//是否禁止旋转屏幕
     private TextView ivTitlebarRight_Tv;
 
+    private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
+
+    @Override
+    @NonNull
+    @CheckResult
+    public final Observable<ActivityEvent> lifecycle() {
+        return lifecycleSubject.hide();
+    }
+
+    @Override
+    @NonNull
+    @CheckResult
+    public final <T> LifecycleTransformer<T> bindUntilEvent(@NonNull ActivityEvent event) {
+        return RxLifecycle.bindUntilEvent(lifecycleSubject, event);
+    }
+
+    @Override
+    @NonNull
+    @CheckResult
+    public final <T> LifecycleTransformer<T> bindToLifecycle() {
+        return RxLifecycleAndroid.bindActivity(lifecycleSubject);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityStackManager.getActivityStackManager().pushActivity(this);
         setScreenManager();
+        lifecycleSubject.onNext(ActivityEvent.CREATE);
         screenManager = ScreenManager.getInstance();
         screenManager.setStatusBar(isStatusBar, this);
         screenManager.setScreenRoate(isScreenPortrait, this);
@@ -123,29 +156,34 @@ public abstract class BaseActivity extends SwipeBackActivity implements OnClickL
     @Override
     protected void onStart() {
         super.onStart();
+        lifecycleSubject.onNext(ActivityEvent.START);
         Log.i(TAG, "--->onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        lifecycleSubject.onNext(ActivityEvent.RESUME);
         Log.i(TAG, "--->onResume()");
     }
 
     @Override
     protected void onPause() {
+        lifecycleSubject.onNext(ActivityEvent.PAUSE);
         super.onPause();
         Log.i(TAG, "--->onPause()");
     }
 
     @Override
     protected void onStop() {
+        lifecycleSubject.onNext(ActivityEvent.STOP);
         super.onStop();
         Log.i(TAG, "--->onStop()");
     }
 
     @Override
     protected void onDestroy() {
+        lifecycleSubject.onNext(ActivityEvent.DESTROY);
         super.onDestroy();
         Log.i(TAG, "--->onDestroy()");
         ActivityStackManager.getActivityStackManager().popActivity(this);
